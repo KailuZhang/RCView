@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RCView</string>
+    <string name="my_favorite_title">My Favorites</string>
+    <string name="product_list_title">Product List</string>
+</resources>

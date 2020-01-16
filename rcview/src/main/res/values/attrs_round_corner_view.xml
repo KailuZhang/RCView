@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RoundCornerView">
+        <attr name="radiusType">
+            <!-- all radius -->
+            <enum name="all" value="0" />
+            <!-- only top radius -->
+            <enum name="top" value="1" />
+            <!-- only bottom radius -->
+            <enum name="bottom" value="2" />
+            <!-- only left radius -->
+            <enum name="left" value="3" />
+            <!-- only right radius -->
+            <enum name="right" value="4" />
+        </attr>
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+</resources>
