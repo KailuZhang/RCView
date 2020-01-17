@@ -10,17 +10,17 @@
             type="io.kailuzhang.github.rcview.data.Product" />
     </data>
 
-    <io.kailuzhang.github.rcview.RoundCornerConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:background="#ffffff"
-        app:radius="4dp"
-        app:radiusType="all">
+        app:cornerRadiusSize="@{@dimen/dp4}"
+        app:cornerRadiusType="@{@integer/corner_radius_all}">
 
-        <io.kailuzhang.github.rcview.RoundCornerImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/product_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -28,12 +28,12 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:scaleType="centerCrop"
+            app:cornerRadiusSize="@{@dimen/dp4}"
+            app:cornerRadiusType="@{@integer/corner_radius_all}"
             app:imageUrl="@{product.imageUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:radius="4dp"
-            app:radiusType="all"
             tools:src="@drawable/ic_launcher_background" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -68,5 +68,5 @@
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="新上海饼干\n椒盐味" />
 
-    </io.kailuzhang.github.rcview.RoundCornerConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,7 +2,7 @@
 <resources>
 
     <declare-styleable name="RoundCornerView">
-        <attr name="radiusType">
+        <attr name="cornerRadiusType">
             <!-- all radius -->
             <enum name="all" value="0" />
             <!-- only top radius -->
@@ -14,7 +14,7 @@
             <!-- only right radius -->
             <enum name="right" value="4" />
         </attr>
-        <attr name="radius" format="dimension" />
+        <attr name="cornerRadiusSize" format="dimension" />
     </declare-styleable>
 
 </resources>

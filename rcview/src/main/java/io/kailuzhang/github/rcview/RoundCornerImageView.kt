@@ -16,8 +16,8 @@ class RoundCornerImageView(
 
     init {
         val ta = context.obtainStyledAttributes(attrs, R.styleable.RoundCornerView)
-        radius = ta.getDimension(R.styleable.RoundCornerView_radius, 0f)
-        val index = ta.getInt(R.styleable.RoundCornerView_radiusType, 0)
+        radius = ta.getDimension(R.styleable.RoundCornerView_cornerRadiusSize, 0f)
+        val index = ta.getInt(R.styleable.RoundCornerView_cornerRadiusType, 0)
         radiusType = sRadiusType[index]
         setRadiusType(radiusType)
         ta.recycle()
@@ -25,14 +25,13 @@ class RoundCornerImageView(
 
     fun setRadiusType(radiusType: RadiusType) {
         this.radiusType = radiusType
-        outlineProvider = getRoundCornerOutlineWithPadding(context, radius, radiusType)
+        outlineProvider = getRoundCornerOutlineWithPadding(radius, radiusType)
         clipToOutline = true
     }
 
     fun setRadius(@Px radius: Float) {
         this.radius = radius
-        outlineProvider =
-            getRoundCornerOutline(context, radius, radiusType)
+        outlineProvider = getRoundCornerOutline(radius, radiusType)
         clipToOutline = true
     }
 }

@@ -2,10 +2,10 @@
 
 package io.kailuzhang.github.rcview
 
-import android.content.Context
 import android.graphics.Outline
 import android.view.View
 import android.view.ViewOutlineProvider
+import androidx.annotation.Px
 import kotlin.math.ceil
 
 val CIRCULAR_OUTLINE = object : ViewOutlineProvider() {
@@ -22,20 +22,16 @@ val CIRCULAR_OUTLINE = object : ViewOutlineProvider() {
 val sRadiusType = arrayOf(
     RadiusType.ALL,
     RadiusType.TOP,
-    RadiusType.BOTTOM,
     RadiusType.LEFT,
+    RadiusType.BOTTOM,
     RadiusType.RIGHT
 )
 
 fun getRoundCornerOutline(
-    context: Context,
-    radius: Float,
+    @Px radius: Float,
     radiusType: RadiusType
 ): ViewOutlineProvider {
-    val dm = context.resources.displayMetrics
-    val density = dm.density
-    val radiusPx = density * radius
-    val ceilRadiusPx = ceil(radiusPx).toInt()
+    val ceilRadius = ceil(radius).toInt()
 
     return object : ViewOutlineProvider() {
         override fun getOutline(view: View, outline: Outline) {
@@ -46,7 +42,7 @@ fun getRoundCornerOutline(
                         0,
                         view.width - view.paddingLeft,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
                 RadiusType.TOP -> {
@@ -54,35 +50,35 @@ fun getRoundCornerOutline(
                         0,
                         0,
                         view.width - view.paddingLeft,
-                        view.height - view.paddingTop + ceilRadiusPx,
-                        radiusPx
+                        view.height - view.paddingTop + ceilRadius,
+                        radius
                     )
                 }
                 RadiusType.BOTTOM -> {
                     outline.setRoundRect(
                         0,
-                        -ceilRadiusPx,
+                        -ceilRadius,
                         view.width - view.paddingLeft,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
                 RadiusType.LEFT -> {
                     outline.setRoundRect(
                         0,
                         0,
-                        view.width - view.paddingLeft + ceilRadiusPx,
+                        view.width - view.paddingLeft + ceilRadius,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
                 RadiusType.RIGHT -> {
                     outline.setRoundRect(
-                        -ceilRadiusPx,
+                        -ceilRadius,
                         0,
                         view.width - view.paddingLeft,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
             }
@@ -91,15 +87,10 @@ fun getRoundCornerOutline(
 }
 
 fun getRoundCornerOutlineWithPadding(
-    context: Context,
-    radius: Float,
+    @Px radius: Float,
     radiusType: RadiusType
 ): ViewOutlineProvider {
-    val dm = context.resources.displayMetrics
-    val density = dm.density
-    val radiusPx = density * radius
-    val ceilRadiusPx = ceil(radiusPx).toInt()
-
+    val ceilRadius = ceil(radius).toInt()
     return object : ViewOutlineProvider() {
         override fun getOutline(view: View, outline: Outline) {
             when (radiusType) {
@@ -109,7 +100,7 @@ fun getRoundCornerOutlineWithPadding(
                         view.paddingTop,
                         view.width - view.paddingLeft,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
                 RadiusType.TOP -> {
@@ -117,35 +108,35 @@ fun getRoundCornerOutlineWithPadding(
                         view.paddingLeft,
                         view.paddingTop,
                         view.width - view.paddingLeft,
-                        view.height - view.paddingTop + ceilRadiusPx,
-                        radiusPx
+                        view.height - view.paddingTop + ceilRadius,
+                        radius
                     )
                 }
                 RadiusType.BOTTOM -> {
                     outline.setRoundRect(
                         view.paddingLeft,
-                        view.paddingTop - ceilRadiusPx,
+                        view.paddingTop - ceilRadius,
                         view.width - view.paddingLeft,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
                 RadiusType.LEFT -> {
                     outline.setRoundRect(
                         view.paddingLeft,
                         view.paddingTop,
-                        view.width - view.paddingLeft + ceilRadiusPx,
+                        view.width - view.paddingLeft + ceilRadius,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
                 RadiusType.RIGHT -> {
                     outline.setRoundRect(
-                        view.paddingLeft - ceilRadiusPx,
+                        view.paddingLeft - ceilRadius,
                         view.paddingTop,
                         view.width - view.paddingLeft,
                         view.height - view.paddingTop,
-                        radiusPx
+                        radius
                     )
                 }
             }
